@@ -218,6 +218,7 @@ class Dart():
         self.__trex.status["right_encoder"] = vEncoderRight
         self.__vMotorLeft = self.__trex.command["left_motor_speed"]
         self.__vMotorRight = self.__trex.command["right_motor_speed"]
+        self.__vHeading = vHeading
 
     # insert here your functions to control the robot using motors, sonars
     # encoders and heading
@@ -239,22 +240,23 @@ class Dart():
         return vLeft, vRight  
         
     def get_distance(self, direction):
-        
         return(self.__sonars.get_distance(direction))
+	
+    def get_angles(self):
+        #return(self.__razor.angles()[0])
+        return(self.__vHeading)
 
+    def goCap(self, trigo):
+        self.set_speed(50,-50)
+        while(self.get_angles()-trigo > 2 or self.get_angles()-trigo < -2):
+            continue
+        self.stop()
 
 if __name__ == "__main__":
     myDart = Dart()
 
-    myDart.set_speed(0,0)
-    time.sleep(1.0)
-    print(myDart.get_odometers())
-    print(myDart.get_distance("front"))
 
-    myDart.set_speed(50,50)
-    time.sleep(1.0)
-    print(myDart.get_odometers())
-    print(myDart.get_distance("front"))
+    myDart.goCap(50)
 
     #arrêt
     myDart.stop()

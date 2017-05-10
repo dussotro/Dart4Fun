@@ -7,7 +7,7 @@ class vRazorIO():
 
     def angles(self):
         # get bearing angle from V-REP
-        cap = 120.0
+        cap = 120
         capTrigo = -cap
         head = 90.0 - capTrigo
         if head > 180.0:
