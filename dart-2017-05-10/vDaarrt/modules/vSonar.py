@@ -1,6 +1,7 @@
 import time
 import os
 import sys
+import math as mt
 
 class vGPIO():
     """
@@ -153,9 +154,26 @@ class vSonar():
             return -1
 
         distance = -1
-        # Put your code here
-        # ...
-                
+        Tmax = 2*self.__MAX_DIST/self.__SPEED_OF_SOUND
+	
+        #impulsion de 10micros
+        pin_out.set_high()
+        time.sleep(1e-5)
+        pin_out.set_low()
+
+        #reception    
+        pin_in.set_high()
+        t0 = time.time()
+        t1 = 0
+        while(pin_in.is_high() and t1-t0 < Tmax):
+            t1 = time.time()	
+        pin_in.set_low()
+
+        if (t1-t0) >= Tmax:
+            distance = mt.inf
+        else:
+            distance = self.__SPEED_OF_SOUND * (t1-t0) / 2
+
         return distance
 
 

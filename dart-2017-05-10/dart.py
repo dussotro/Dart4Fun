@@ -23,6 +23,7 @@ import math
 import struct
 import sys
 
+
 def high_low_int(high_byte, low_byte):
     '''
     Convert low and low and high byte to int
@@ -219,25 +220,43 @@ class Dart():
         self.__vMotorRight = self.__trex.command["right_motor_speed"]
 
     # insert here your functions to control the robot using motors, sonars
-    #  encoders and heading
+    # encoders and heading
 
     def stop(self):
         print ("Game Over")
-        # stop the connection to the simulator
-        self.__simulation_alive = False
         # add a command to stop the motors
-        # ...
-        
+        self.set_speed(0,0)
+        # stop the connection to the simulator	
+        self.__simulation_alive = False
+   
+    def set_speed(self, speed_left, speed_right):
+        self.__trex.command["left_motor_speed"] = speed_left
+        self.__trex.command["right_motor_speed"] = speed_right 
     
+    def get_odometers(self):
+        vLeft = self.__trex.status ['left_encoder']
+        vRight = self.__trex.status ['right_encoder']
+        return vLeft, vRight  
         
+    def get_distance(self, direction):
         
+        return(self.__sonars.get_distance(direction))
+
 
 if __name__ == "__main__":
     myDart = Dart()
-    # insert your test code here :
 
-    time.sleep(2.0) # example do nothing for 2 seconds
+    myDart.set_speed(0,0)
+    time.sleep(1.0)
+    print(myDart.get_odometers())
+    print(myDart.get_distance("front"))
 
+    myDart.set_speed(50,50)
+    time.sleep(1.0)
+    print(myDart.get_odometers())
+    print(myDart.get_distance("front"))
+
+    #arrêt
     myDart.stop()
 
 
