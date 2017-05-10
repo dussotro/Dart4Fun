@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>simGetSceneCustomData</title>
+<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+
+<div align="center">
+<table class=allEncompassingTable >
+ <tr>
+  <td >
+<p><a href="../../index.html" TARGET="_top"><img src="../images/homeImg.png"></a></p>
+
+<h1><a href="../apiOverview.htm">Regular API</a> function</h1>
+<h3 class=subsectionBar><a name="simGetSceneCustomData" id="simGetSceneCustomData"></a>simGetSceneCustomData</h3>
+<table class=apiTable>
+<tr class=apiTableTr> 
+<td class=apiTableLeftDescr>
+Description 
+</td> 
+<td class=apiTableRightDescr>Retrieves the scene custom data previously added with the <a href="simAddSceneCustomData.htm">simAddSceneCustomData</a> function. See also <a href="simGetSceneCustomDataLength.htm">simGetSceneCustomDataLength</a>, <a href="simAddSceneCustomData.htm">simAddSceneCustomData</a>, <a href="simReadCustomDataBlock.htm">simReadCustomDataBlock</a> and <a href="simPersistentDataRead.htm">simPersistentDataRead</a>.<br></td>
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCSyn>
+C synopsis
+</td> 
+<td class=apiTableRightCSyn>simInt simGetSceneCustomData(simInt header,simChar* data)<br></td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCParam>C parameters</td> 
+<td class=apiTableRightCParam>
+<div><strong>header</strong>: identifier of the custom data. See <a href="simAddSceneCustomData.htm">simAddSceneCustomData</a> for details.</div>
+<div><strong>data</strong>: pointer to a data buffer allocated by the user. Use <a href="simGetSceneCustomDataLength.htm">simGetSceneCustomDataLength</a> to adjust the buffer size.<br>
+</div>
+<div></div></td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCRet>
+C return value
+</td> 
+<td class=apiTableRightCRet>
+<div>-1 if operation was not successful. In a future release, a more differentiated return value might be available</div>
+</td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLSyn>
+Lua synopsis
+</td> 
+<td class=apiTableRightLSyn>string data=simGetSceneCustomData(number header)</td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLParam>Lua parameters</td> 
+<td class=apiTableRightLParam>
+<div>Same as C-function.</div>
+<div></div></td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLRet>
+Lua return values
+</td> 
+<td class=apiTableRightLRet>
+<div>nil if operation was not successful. Otherwise the custom data (might be an empty string if custom data doesn't exist).</div>
+<div></div></td> 
+</tr> 
+</table> 
+
+<br>
+<p><a href="../apiFunctions.htm">All regular API functions on one page</a></p>
+<br>
+<br>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>

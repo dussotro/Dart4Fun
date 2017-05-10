@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml-stylesheet type="text/xsl" href="callbacks.xsl"?>
+
+<plugin name="CustomUI" author="federico.ferri.it@gmail.com">
+    <description>API functions for creating custom user interfaces.</description>
+    <command name="create">
+        <description>Create a window.</description>
+        <see-also>
+            <command name="destroy" />
+        </see-also>
+        <params>
+            <param name="xml" type="string">
+                <description>xml ui definition</description>
+            </param>
+        </params>
+        <return>
+            <param name="uiHandle" type="int" default="-1">
+                <description>a handle to the created UI</description>
+            </param>
+        </return>
+    </command>
+    <command name="destroy">
+        <description>Destroy a window.</description>
+        <see-also>
+            <command name="create" />
+        </see-also>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getSliderValue">
+        <description>Get the value of a slider widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+        </return>
+    </command>
+    <command name="setSliderValue">
+        <description>Set the value of a slider widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getEditValue">
+        <description>Get the value of a edit widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="value" type="string">
+                <description>value</description>
+            </param>
+        </return>
+    </command>
+    <command name="setEditValue">
+        <description>Set the value of a edit widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="value" type="string">
+                <description>value</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getSpinboxValue">
+        <description>Get the value of a spinbox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="value" type="float">
+                <description>value</description>
+            </param>
+        </return>
+    </command>
+    <command name="setSpinboxValue">
+        <description>Set the value of a spinbox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="value" type="float">
+                <description>value</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getCheckboxValue">
+        <description>Get the value of a checkbox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+        </return>
+    </command>
+    <command name="setCheckboxValue">
+        <description>Set the value of a checkbox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getRadiobuttonValue">
+        <description>Get the value of a radiobutton widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+        </return>
+    </command>
+    <command name="setRadiobuttonValue">
+        <description>Set the value of a radiobutton widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="value" type="int">
+                <description>value</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getLabelText">
+        <description>Get the text of a label widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="text" type="string">
+                <description>text</description>
+            </param>
+        </return>
+    </command>
+    <command name="setLabelText">
+        <description>Set the text of a label widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="text" type="string">
+                <description>text</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="insertComboboxItem">
+        <description>Insert an item in a combobox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="index" type="int">
+                <description>If the index is equal to or higher than the total number of items, the new item is appended to the list of existing items. If the index is zero or negative, the new item is prepended to the list of existing items.</description>
+            </param>
+            <param name="text" type="string">
+                <description>Item text.</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="removeComboboxItem">
+        <description>Remove an item from a combobox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="index" type="int">
+                <description>Item index.</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="getComboboxItemCount">
+        <description>Get the number of items in the specified combobox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+        </params>
+        <return>
+            <param name="count" type="int">
+                <description>Item count.</description>
+            </param>
+        </return>
+    </command>
+    <command name="getComboboxItemText">
+        <description>Get the text of an item in a combobox widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="index" type="int">
+                <description>Item index.</description>
+            </param>
+        </params>
+        <return>
+            <param name="text" type="string">
+                <description>Item text.</description>
+            </param>
+        </return>
+    </command>
+    <command name="hide">
+        <description>Hide the UI window.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="show">
+        <description>Show the UI window.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="isVisible">
+        <description>Check if the window is visible.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+        </params>
+        <return>
+            <param name="visibility" type="bool">
+                <description>true if the window is visible, false otherwise</description>
+            </param>
+        </return>
+    </command>
+    <command name="getPosition">
+        <description>Get the position of a UI window.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+        </params>
+        <return>
+            <param name="x" type="int">
+                <description>X position</description>
+            </param>
+            <param name="y" type="int">
+                <description>Y position</description>
+            </param>
+        </return>
+    </command>
+    <command name="setPosition">
+        <description>Set the position of a UI window.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="x" type="int">
+                <description>X position</description>
+            </param>
+            <param name="y" type="int">
+                <description>Y position</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="setImageData">
+        <description>Set image content using specified bitmap (RGB888) data.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>id of a image widget</description>
+            </param>
+            <param name="data" type="string">
+                <description>image byte data</description>
+            </param>
+            <param name="width" type="int">
+                <description>width of the image</description>
+            </param>
+            <param name="height" type="int">
+                <description>height of the image</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <command name="setEnabled">
+        <description>Enable or disable a widget.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>widget id</description>
+            </param>
+            <param name="enabled" type="bool">
+                <description>enabled</description>
+            </param>
+            <param name="suppressEvents" type="bool" default="false">
+                <description>if true, no event will be generated from this call</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </command>
+    <enum name="Test" item-prefix="sim_customui_test_" base="39457">
+        <item name="a">
+        </item>
+        <item name="b">
+        </item>
+        <item name="c">
+        </item>
+    </enum>
+    <script-function name="onclickCallback">
+        <description>Callback for button click event.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the clicked button</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="onchangeIntCallback">
+        <description>Callback for widget change event.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the widget</description>
+            </param>
+            <param name="value" type="int">
+                <description>the new value</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="onchangeDoubleCallback">
+        <description>Callback for widget change event.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the widget</description>
+            </param>
+            <param name="value" type="float">
+                <description>the new value</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="onchangeStringCallback">
+        <description>Callback for widget change event.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the widget</description>
+            </param>
+            <param name="value" type="string">
+                <description>the new value</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="oneditingfinishedCallback">
+        <description>Callback for editing finished event.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>ui handle</description>
+            </param>
+            <param name="id" type="int">
+                <description>the ID of the widget</description>
+            </param>
+            <param name="value" type="string">
+                <description>the new value</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+    <script-function name="oncloseCallback">
+        <description>Callback for window close event. It will be called when the user clicks the close button of the window. When an onclose callback is specified, the window will not close automatically when the user clicks the window close button.</description>
+        <params>
+            <param name="handle" type="int">
+                <description>the handle of the UI</description>
+            </param>
+        </params>
+        <return>
+        </return>
+    </script-function>
+</plugin>

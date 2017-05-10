@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu May 19 14:56:15 2016
+
+@author: newubu
+"""
+
+# world for DART challenge uses walls to define world1.txt
+# put the robot at the start of the track
+
+import geometry

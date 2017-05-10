@@ -1,0 +1,1015 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN"><html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <meta http-equiv="Content-Language" content="en-us">
+      <title>Qt-based custom UI API reference</title>
+      <link rel="stylesheet" type="text/css" href="../../helpFiles/style.css">
+   </head>
+   <body>
+      <div align="center">
+         <table class="allEncompassingTable">
+            <tr>
+               <td>
+                  <h1><a href="customUIPlugin.htm">Qt-based custom UI</a> API reference</h1>
+                  <p class="infoBox">The list of API functions below provides an interface to the <a href="customUIPlugin.htm">Qt-based custom UI</a> plugin for V-REP.</p>
+                  <h3 class="subsectionBar"><a name="create" id="create"></a>simExtCustomUI_create
+                </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Create a window.<br>See also: <a href="#destroy">simExtCustomUI_destroy</a></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int uiHandle=simExtCustomUI_create(string xml)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>xml</strong>: 
+                              
+                              <description>xml ui definition</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>uiHandle</strong>: 
+                              
+                              <description>a handle to the created UI</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="destroy" id="destroy"></a>simExtCustomUI_destroy
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Destroy a window.<br>See also: <a href="#create">simExtCustomUI_create</a></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_destroy(int handle)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getCheckboxValue" id="getCheckboxValue"></a>simExtCustomUI_getCheckboxValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the value of a checkbox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int value=simExtCustomUI_getCheckboxValue(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getComboboxItemCount" id="getComboboxItemCount"></a>simExtCustomUI_getComboboxItemCount
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the number of items in the specified combobox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int count=simExtCustomUI_getComboboxItemCount(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>count</strong>: 
+                              
+                              <description>Item count.</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getComboboxItemText" id="getComboboxItemText"></a>simExtCustomUI_getComboboxItemText
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the text of an item in a combobox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">string text=simExtCustomUI_getComboboxItemText(int handle, int id, int index)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>index</strong>: 
+                              
+                              <description>Item index.</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>text</strong>: 
+                              
+                              <description>Item text.</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getEditValue" id="getEditValue"></a>simExtCustomUI_getEditValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the value of a edit widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">string value=simExtCustomUI_getEditValue(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getLabelText" id="getLabelText"></a>simExtCustomUI_getLabelText
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the text of a label widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">string text=simExtCustomUI_getLabelText(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>text</strong>: 
+                              
+                              <description>text</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getPosition" id="getPosition"></a>simExtCustomUI_getPosition
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the position of a UI window.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int x, int y=simExtCustomUI_getPosition(int handle)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>x</strong>: 
+                              
+                              <description>X position</description>
+                              
+                           </div>
+                           <div><strong>y</strong>: 
+                              
+                              <description>Y position</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getRadiobuttonValue" id="getRadiobuttonValue"></a>simExtCustomUI_getRadiobuttonValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the value of a radiobutton widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int value=simExtCustomUI_getRadiobuttonValue(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getSliderValue" id="getSliderValue"></a>simExtCustomUI_getSliderValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the value of a slider widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">int value=simExtCustomUI_getSliderValue(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="getSpinboxValue" id="getSpinboxValue"></a>simExtCustomUI_getSpinboxValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Get the value of a spinbox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">float value=simExtCustomUI_getSpinboxValue(int handle, int id)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="hide" id="hide"></a>simExtCustomUI_hide
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Hide the UI window.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_hide(int handle)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="insertComboboxItem" id="insertComboboxItem"></a>simExtCustomUI_insertComboboxItem
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Insert an item in a combobox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_insertComboboxItem(int handle, int id, int index, string text, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>index</strong>: 
+                              
+                              <description>If the index is equal to or higher than the total number of items, the new item is
+                                 appended to the list of existing items. If the index is zero or negative, the new
+                                 item is prepended to the list of existing items.
+                              </description>
+                              
+                           </div>
+                           <div><strong>text</strong>: 
+                              
+                              <description>Item text.</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="isVisible" id="isVisible"></a>simExtCustomUI_isVisible
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Check if the window is visible.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">bool visibility=simExtCustomUI_isVisible(int handle)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">
+                           <div><strong>visibility</strong>: 
+                              
+                              <description>true if the window is visible, false otherwise</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="removeComboboxItem" id="removeComboboxItem"></a>simExtCustomUI_removeComboboxItem
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Remove an item from a combobox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_removeComboboxItem(int handle, int id, int index, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>index</strong>: 
+                              
+                              <description>Item index.</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setCheckboxValue" id="setCheckboxValue"></a>simExtCustomUI_setCheckboxValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the value of a checkbox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setCheckboxValue(int handle, int id, int value, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setEditValue" id="setEditValue"></a>simExtCustomUI_setEditValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the value of a edit widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setEditValue(int handle, int id, string value, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setEnabled" id="setEnabled"></a>simExtCustomUI_setEnabled
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Enable or disable a widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setEnabled(int handle, int id, bool enabled, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>enabled</strong>: 
+                              
+                              <description>enabled</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setImageData" id="setImageData"></a>simExtCustomUI_setImageData
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set image content using specified bitmap (RGB888) data.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setImageData(int handle, int id, string data, int width, int height)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>id of a image widget</description>
+                              
+                           </div>
+                           <div><strong>data</strong>: 
+                              
+                              <description>image byte data</description>
+                              
+                           </div>
+                           <div><strong>width</strong>: 
+                              
+                              <description>width of the image</description>
+                              
+                           </div>
+                           <div><strong>height</strong>: 
+                              
+                              <description>height of the image</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setLabelText" id="setLabelText"></a>simExtCustomUI_setLabelText
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the text of a label widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setLabelText(int handle, int id, string text, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>text</strong>: 
+                              
+                              <description>text</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setPosition" id="setPosition"></a>simExtCustomUI_setPosition
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the position of a UI window.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setPosition(int handle, int x, int y, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>x</strong>: 
+                              
+                              <description>X position</description>
+                              
+                           </div>
+                           <div><strong>y</strong>: 
+                              
+                              <description>Y position</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setRadiobuttonValue" id="setRadiobuttonValue"></a>simExtCustomUI_setRadiobuttonValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the value of a radiobutton widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setRadiobuttonValue(int handle, int id, int value, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setSliderValue" id="setSliderValue"></a>simExtCustomUI_setSliderValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the value of a slider widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setSliderValue(int handle, int id, int value, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="setSpinboxValue" id="setSpinboxValue"></a>simExtCustomUI_setSpinboxValue
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Set the value of a spinbox widget.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_setSpinboxValue(int handle, int id, float value, bool suppressEvents = false)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                           <div><strong>id</strong>: 
+                              
+                              <description>widget id</description>
+                              
+                           </div>
+                           <div><strong>value</strong>: 
+                              
+                              <description>value</description>
+                              
+                           </div>
+                           <div><strong>suppressEvents</strong>: 
+                              
+                              <description>if true, no event will be generated from this call</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table><br><h3 class="subsectionBar"><a name="show" id="show"></a>simExtCustomUI_show
+                  </h3>
+                  <table class="apiTable">
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftDescr">
+                           Description
+                           
+                        </td>
+                        <td class="apiTableRightDescr">Show the UI window.<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLSyn">Lua synopsis</td>
+                        <td class="apiTableRightLSyn">simExtCustomUI_show(int handle)<br></td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLParam">Lua parameters</td>
+                        <td class="apiTableRightLParam">
+                           <div><strong>handle</strong>: 
+                              
+                              <description>ui handle</description>
+                              
+                           </div>
+                        </td>
+                     </tr>
+                     <tr class="apiTableTr">
+                        <td class="apiTableLeftLRet">Lua return values</td>
+                        <td class="apiTableRightLRet">-</td>
+                     </tr>
+                  </table>
+               </td>
+            </tr>
+         </table>
+      </div>
+   </body>
+</html>

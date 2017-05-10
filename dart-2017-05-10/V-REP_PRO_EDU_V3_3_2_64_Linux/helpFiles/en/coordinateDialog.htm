@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>Coordinate and transformation dialog</title>
+<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+
+<body>
+
+<div align="center">
+<table class=allEncompassingTable >
+ <tr>
+  <td >
+<p><a href="../index.html" TARGET="_top"><img src="images/homeImg.png"></a></p>
+
+
+
+<h1>Coordinate and transformation dialog</h1>
+
+
+<p>The coordinate and transformation dialog becomes visible when the user switches to the <a href="objectMovement.htm">object/item movement mode</a> using one of following <a href="userInterface.htm#toolbars">toolbar</a> buttons:
+</p>
+
+<p align=center><img src="images/objectMovement1.jpg"></p>
+<p class=imageLabel>[Manipulation toolbar buttons (translate and rotate)]</p>
+<br>
+
+<p>The content of the dialog is dependent on the selected movement mode (<a href="#translation">translation</a> or <a href="#rotation">rotation</a>) and the last selected object or item. If no object/item is selected, the dialog is inactive. If more than one object/item is selected, then some parameters can be copied from the last selected object/item to the other selected objects/items (<strong>Apply to selection</strong>-buttons).
+</p>
+<br>
+<br>
+
+<table class=subsectionTable><tr class=subsectionTd><td class=subsectionTd>
+<a name="translation"></a>Position/translations
+</td></tr></table> 
+
+<p>This part of the dialog becomes visible when object translation toolbar button is selected:</p>
+
+<p align=center><img src="images/objectShiftButton.jpg"></p>
+<p class=imageLabel>[Object translation toolbar button]</p>
+
+<p align=center><img src="images/positionAndTranslationDlg.jpg"></p>
+<p class=imageLabel>[Position/translations  dialog]</p>
+<br>
+
+<p>The dialog has two distinct sections. 
+</p>
+
+
+
+<li><strong><a href="#positionOperation">Object / item position</a></strong>: this section allows modifying the coordinates of an object or item.<br>
+</li>
+<li><strong><a href="#translationAndScalingOperation">Object / item translation &amp; position scaling operations</a></strong>: this section allows applying translation and scaling transformations to an object or item.
+</li>
+
+<p>Following describes each dialog item in more detail:<br>
+</p>
+
+<h4>
+<a name="positionOperation" id="positionOperation"></a>Object / item position
+</h4>
+
+<li><strong>Relative to world/parent frame</strong>: indicates that the coordinates are relative to the absolute reference frame, or relative to the parent reference frame.
+</li>
+<li><strong>X-/ Y- / Z-coordinate</strong>: position of the selected object relative to the indicated reference frame (world or parent).
+</li>
+
+<h4>
+<a name="translationAndScalingOperation" id="translationAndScalingOperation"></a>object / item translation &amp; position scaling operations
+</h4>
+
+<li><strong>Relative to world/parent frame/own frame</strong>: indicates that the transformation will be relative to the absolute reference frame, relative to the parent reference frame, or relative to the object's own reference frame.
+</li>
+
+<li>Translate<strong> along X / Y / Z</strong>: indicates the desired translation amounts  along the x-, y- and  z-axis of the indicated reference frame (world, parent or own frame).
+</li>
+
+<li>Scale<strong> along X / Y / Z</strong>: indicates the desired  position scaling along the x-, y- and  z-axis of the indicated reference frame (world or parent).
+</li>
+<br>
+<br>
+
+
+
+<table class=subsectionTable><tr class=subsectionTd><td class=subsectionTd>
+<a name="rotation"></a>Orientation/rotations
+</td></tr></table> 
+
+
+<p>This part of the dialog becomes visible when object rotation toolbar button is selected:</p>
+
+<p align=center><img src="images/objectRotateButton.jpg"></p>
+<p class=imageLabel>[Object rotation toolbar button]</p>
+
+<p align=center><img src="images/orientationAndRotationDlg.jpg"></p>
+<p class=imageLabel>[Orientation/rotations  dialog]</p>
+<br>
+
+<p>The dialog has two distinct sections. 
+</p>
+
+
+
+<li><strong><a href="#orientationOperation">Object / item orientation</a></strong>: this section allows modifying the orientation of an object or item.<br>
+</li>
+<li><strong><a href="#rotationOperation">Object / item rotation operations</a></strong>: this section allows applying rotation  transformations to an object or item.
+</li>
+
+<p>Following describes each dialog item in more detail:<br>
+</p>
+
+
+<h4>
+<a name="orientationOperation"></a>Object / item orientation
+</h4>
+
+<li><strong>Relative to world/parent frame</strong>: indicates that the indicated <a href="eulerAngles.htm">Euler angles</a> are relative to the absolute reference frame, or relative to the parent reference frame. </li>
+<li><strong>Alpha / Beta / Gamma</strong>: <a href="eulerAngles.htm">Euler angles</a> of the selected object relative to the indicated reference frame (world or parent). </li>
+
+
+
+<h4>
+<a name="rotationOperation"></a>object / item rotation operations
+</h4>
+
+<li><strong>Relative to world/parent frame/own frame</strong>: indicates that the transformation will be relative to the absolute reference frame, relative to the parent reference frame, or relative to the object's own reference frame.
+</li>
+
+<li>Rotate<strong> around X / Y / Z</strong>: indicates  the desired rotation amounts around the x-, y- and z-axis of the indicated reference frame (world, parent or own frame).
+</li>
+
+<br>
+<br>
+<h3 class=recommendedTopics>Recommended topics</h3>
+
+<li><a href="apiFunctionListCategory.htm#coordinatesAndTransformations">Related API functions</a></li>
+<li><a href="eulerAngles.htm">Euler angles</a></li>
+<li><a href="objectMovement.htm">Object position/orientation manipulation</a></li>
+<li><a href="settings.htm">User settings dialog</a></li>
+<li><a href="vertexEditMode.htm">Vertex edit mode</a></li>
+<li><a href="pathEditMode.htm">Path edit mode</a></li>
+
+<br>
+<br>
+
+ </tr>
+</table> 
+</div>  
+  
+  
+</body>
+
+</html>

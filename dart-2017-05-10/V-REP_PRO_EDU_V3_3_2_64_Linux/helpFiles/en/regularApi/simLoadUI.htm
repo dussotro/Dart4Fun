@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Strict//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<title>simLoadUI</title>
+<link rel="stylesheet" type="text/css" href="../../style.css">
+</head>
+
+<body>
+
+<div align="center">
+<table class=allEncompassingTable >
+ <tr>
+  <td >
+<p><a href="../../index.html" TARGET="_top"><img src="../images/homeImg.png"></a></p>
+
+<h1><a href="../apiOverview.htm">Regular API</a> function</h1>
+<h3 class=subsectionBar><a name="simLoadUI" id="simLoadUI"></a>simLoadUI
+<div class=tab>remote API equivalent: <a href="../remoteApiFunctions.htm#simxLoadUI">simxLoadUI</a></div>
+<div class=tab>RosPlugin API equivalent: <a href="../rosServices.htm#simRosLoadUI">simRosLoadUI</a></div>
+</h3>
+<table class=apiTable>
+<tr class=apiTableTr> 
+<td class=apiTableLeftDescr>
+Description 
+</td> 
+<td class=apiTableRightDescr>Loads a previously saved OpenGl-based custom UI file (*.ttb-files). See also <a href="simSaveUI.htm">simSaveUI</a>, <a href="simLoadModel.htm">simLoadModel</a>, <a href="simLoadScene.htm">simLoadScene</a>, and <a href="simSetBoolParameter.htm">simSetBoolParameter</a> with <a href="../apiConstants.htm#booleanParameters">sim_boolparam_scene_and_model_load_messages</a>. When interacting with a UI from an <a href="../addOns.htm">add-on</a>, you might have to add the property flag <a href="../apiConstants.htm#uiProperties">sim_ui_property_pauseactive</a> to the UI, in order to also have it respond while simulation is paused.<br></td>
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCSyn>
+C synopsis
+</td> 
+<td class=apiTableRightCSyn>simInt simLoadUI(const simChar* filename,int maxCount,int* uiHandles)<br></td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCParam>C parameters</td> 
+<td class=apiTableRightCParam>
+<div><strong>filename</strong>: UI filename. The filename extension is required (&quot;ttb&quot;)</div>
+<div><strong>maxCount</strong>: the maximum number of items that the uiHandles pointer can hold</div>
+<div><strong>uiHandles</strong>: a pointer to integer values that will receive the handles of the loaded UIs (a single UI file can hold an unlimited number of UI elements)</div>
+</td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftCRet>
+C return value
+</td> 
+<td class=apiTableRightCRet>
+<div>-1 if operation was not successful, otherwise the number of UI elements loaded.<br>
+</div>
+</td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLSyn>
+Lua synopsis
+</td> 
+<td class=apiTableRightLSyn>table handles=simLoadUI(string filename)</td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLParam>Lua parameters</td> 
+<td class=apiTableRightLParam>
+<div>Same as C-function</div>
+<div></div></td> 
+</tr> 
+<tr class=apiTableTr> 
+<td class=apiTableLeftLRet>
+Lua return values
+</td> 
+<td class=apiTableRightLRet>
+<div><strong>handles</strong>: a table containing the handles of all loaded UI elements, or nil in case of an error</div>
+</td> 
+</tr> 
+</table> 
+
+<br>
+<p><a href="../apiFunctions.htm">All regular API functions on one page</a></p>
+<br>
+<br>
+</td>
+</tr>
+</table>
+</div>
+</body>
+</html>
