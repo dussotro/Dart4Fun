@@ -6,44 +6,44 @@
 from dart import Dart
 from threading import Thread
 
-class FSMfacile(Dart):
+class FSMfacile():
     """FSM basique du robot, où les avancées sont pré-programmées, et les rotations aussi (90°)"""
     
     def __init__(self):
-        super(FSM,self).__init__()
+        self.robot = Dart()
         self.state = "arret"
         self.nxtState = "arret"
         
-    def arret(self):
-       self.set_speed(0,0)
+    def arret(robot):
+       robot.set_speed(0,0)
    
-    def avancer(self):
-        self.goLineHeading(self.get_angles(),60,1)
+    def avancer(robot):
+        robot.goLineHeading(robot.get_angles(),60,1)
         
-    def rotationDroite(self):
-        self.setHeading(self.get_angles()+90)
+    def rotationDroite(robot):
+        robot.setHeading(robot.get_angles()+90)
         
-    def rotationGauche(self):
-        self.setHeading(self.get_angles()-90)
+    def rotationGauche(robot):
+        robot.setHeading(robot.get_angles()-90)
     
     
     def run(self):        
         if self.nxtState == "avancer":
             self.state = "avancer"
-            self.avancer()
+            self.avancer(self.robot)
             
 
         elif self.nxtState == "gauche":
             self.state = "gauche"
-            self.rotationGauche()
+            self.rotationGauche(self.robot)
             
         elif self.nxtState == "droite":
             self.state == "droite"
-            self.rotationDroite()
+            self.rotationDroite(self.robot)
             
         elif self.nxtState == "arret":
             self.state = "arret"
-            self.arret()
+            self.arret(self.robot)
             
             
 class Key_listener(Thread):
