@@ -251,12 +251,47 @@ class Dart():
         while(self.get_angles()-trigo > 2 or self.get_angles()-trigo < -2):
             continue
         self.stop()
+ 
+    def center(self, a,b,s):
+        
+        if s<=-180:
+            s = s + 360
+        elif s > 180:
+            s = s - 360
+        #a entre -180 et 180
+        #b entre -180 et 180
+        return(s)
+
+
+    def setHeading(self, head):
+        #head entre 0 et 360
+        headErrMax = 0.5
+        headOK = False
+        while not headOK :
+            headMes = self.get_angles()
+            headErr = head - headMes
+            headErr = self.center(head, headMes, headErr)
+            #headErr = headErr - 180
+            #headErr centré en 0
+            vit = abs(headErr)/4 + 30
+            if headErr >=0 :
+                self.set_speed(vit,-vit)
+            else :
+                self.set_speed(-vit,vit)
+
+            if abs(headErr) < headErrMax:
+                print("ca marche Michel")
+                headOK = True
+                self.set_speed(0,0)
+            else:
+                print(self.__vHeading)
+                #print(abs(headErr) - headErrMax)
+                time.sleep(0.01)
 
 if __name__ == "__main__":
     myDart = Dart()
-
-
-    myDart.goCap(50)
+	
+    myDart.setHeading(100)
 
     #arrêt
     myDart.stop()
