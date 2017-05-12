@@ -288,10 +288,66 @@ class Dart():
                 #print(abs(headErr) - headErrMax)
                 time.sleep(0.01)
 
+    def goLineHeading (self,head,speed, duration):
+        self.setHeading(head, 1)
+        capinitial=head
+        t0=time.time()
+        t1=time.time()
+        capfinal=self.get_angles()
+        while t1-t0 < duration:
+            if capinitial-capfinal>0:
+                self.set.speed(speed[0]+0.5,speed[1])
+            else:
+                self.set.speed(speed[0], speed[1]+0.5)
+
+    def goLineOdo (self,speed, duration):
+        self.setHeading(1,1)
+        t0=time.time()
+        t1=time.time()
+        a=self.get_odometers()
+        while t1-t0 < duration:
+            time.sleep(0.1)
+            b=self.get_odometers()
+            if b-a==0 or b-a<0.001:
+                self.goLineHeading(self.setHeading(1,1), speed,duration)
+                a=b
+
+    def obstcleAVoid(self):
+        distanceMax=0.1
+        d=self.get_distance(front)
+        if d-distanceMax<0:
+             self.goLineHeading (self.setHeading(1,1),(50,-50), 0.1)
+        else:
+            self.goLineHeading (self.setHeading(1,1),(50,50), 0.1)
+
+    def goCurveOdo (self,speedTan, radius, sign, duration):
+
+        t0=time.time()
+        t1=time.time()
+        while t1-t0 < duration:
+            if sign==1:
+                self.goLineHeading (self.setHeading(1,1),(50,-50), 0.1)
+	    else:
+                self.goLineHeading (self.setHeading(1,1),(-50,50), 0.1)
+	
+        
+            
+        
+                
+
+
+            
+            
+        
+
+	
+        
+
+        
+        
+
 if __name__ == "__main__":
     myDart = Dart()
-	
-    myDart.setHeading(100)
 
     #arrêt
     myDart.stop()
