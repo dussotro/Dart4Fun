@@ -265,7 +265,7 @@ class Dart():
 
     def setHeading(self, head):
         #head entre 0 et 360
-        headErrMax = 0.5
+        headErrMax = 1
         headOK = False
         while not headOK :
             headMes = self.get_angles()
@@ -286,39 +286,52 @@ class Dart():
             else:
                 print(self.__vHeading)
                 #print(abs(headErr) - headErrMax)
-                time.sleep(0.01)
+                time.sleep(0.1)
 
     def goLineHeading (self,head,speed, duration):
-        self.setHeading(head, 1)
-        capinitial=head
+        self.setHeading(head)
+        time.sleep(0.1)
+        capInitial=head
         t0=time.time()
         t1=time.time()
-        capfinal=self.get_angles()
         while t1-t0 < duration:
-            if capinitial-capfinal>0:
-                self.set.speed(speed[0]+0.5,speed[1])
+            t1=time.time()
+            capFinal=self.get_angles()
+            diff = capInitial-capFinal
+            diff = self.center(capInitial, capFinal, diff)
+            print(capInitial-capFinal)
+            if capInitial-capFinal>0:
+                self.set_speed(speed+3,speed)
             else:
-                self.set.speed(speed[0], speed[1]+0.5)
+                self.set_speed(speed, speed+3)
+        self.set_speed(0,0)
 
     def goLineOdo (self,speed, duration):
-        self.setHeading(1,1)
+        self.setHeading(50)
         t0=time.time()
         t1=time.time()
-        a=self.get_odometers()
+        gauche0, droite0=self.get_odometers()
         while t1-t0 < duration:
+            t1=time.time()
+            gauche1, droite1=self.get_odometers()
             time.sleep(0.1)
-            b=self.get_odometers()
-            if b-a==0 or b-a<0.001:
-                self.goLineHeading(self.setHeading(1,1), speed,duration)
-                a=b
+            print((gauche1 - gauche0) - (droite1-droite0) )
+            if (gauche1 - gauche0) - (droite1-droite0) > 1:
+                self.set_speed(speed, speed + 3)
+            elif (gauche1 - gauche0) - (droite1-droite0) < -1:
+                self.set_speed(speed + 3, speed)
+            gauche0, droite0 = gauche1, droite1
 
-    def obstcleAVoid(self):
-        distanceMax=0.1
-        d=self.get_distance(front)
-        if d-distanceMax<0:
-             self.goLineHeading (self.setHeading(1,1),(50,-50), 0.1)
-        else:
-            self.goLineHeading (self.setHeading(1,1),(50,50), 0.1)
+    def obstacleAvoid(self):
+        distanceMax=1
+        self.set_speed(50,50)
+        while True:
+            d=self.get_distance('front')
+            print(d)
+            if d-distanceMax<0:
+                self.set_speed(50,-50)
+            else:
+                self.set_speed(-50,50)
 
     def goCurveOdo (self,speedTan, radius, sign, duration):
 
@@ -327,28 +340,14 @@ class Dart():
         while t1-t0 < duration:
             if sign==1:
                 self.goLineHeading (self.setHeading(1,1),(50,-50), 0.1)
-	    else:
+            else:
                 self.goLineHeading (self.setHeading(1,1),(-50,50), 0.1)
-	
-        
-            
-        
-                
 
-
-            
-            
-        
-
-	
-        
-
-        
         
 
 if __name__ == "__main__":
     myDart = Dart()
-
+    myDart.obstacleAvoid()
     #arrêt
     myDart.stop()
 
