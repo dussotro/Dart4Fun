@@ -18,13 +18,13 @@ class FSMfacile(Dart):
        self.set_speed(0,0)
    
     def avancer(self):
-        self.goLineHeading(self.get_angles(),50,5)
+        self.goLineHeading(self.get_angles(),60,1)
         
     def rotationDroite(self):
-        self.set_speed(50,-50)
+        self.setHeading(self.get_angles()+90)
         
     def rotationGauche(self):
-        self.set_speed(-50,50)
+        self.setHeading(self.get_angles()-90)
     
     
     def run(self):        
@@ -49,7 +49,7 @@ class FSMfacile(Dart):
 class Key_listener(Thread):
 	def __init__(self, fsm):
 		Thread.__init__(self)
-		self.fsm = FSM()
+		self.fsm = FSMfacile()
 	
 	def run(self):
 		while True:
