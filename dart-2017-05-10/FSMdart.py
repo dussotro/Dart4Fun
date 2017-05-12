@@ -10,7 +10,7 @@ class FSMfacile():
     """FSM basique du robot, où les avancées sont pré-programmées, et les rotations aussi (90°)"""
     
     def __init__(self):
-        self.robot = Dart()
+
         self.state = "arret"
         self.nxtState = "arret"
         
@@ -53,5 +53,12 @@ class Key_listener(Thread):
 	
 	def run(self):
 		while True:
-			l = raw_input("fsm>")
+			l = input("fsm : ")
 			self.fsm.nxtState = l
+
+if __name__== "__main__":
+    fsm = FSMfacile()
+    kl = Key_listener(fsm)
+    kl.start()
+    while True:
+        fsm.run()
