@@ -170,7 +170,7 @@ class vSonar():
         pin_in.set_low()
 
         if (t1-t0) >= Tmax:
-            distance = mt.inf
+            distance = 1000
         else:
             distance = self.__SPEED_OF_SOUND * (t1-t0) / 2
 

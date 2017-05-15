@@ -22,6 +22,7 @@ import time
 import math
 import struct
 import sys
+from threading import Thread
 
 
 def high_low_int(high_byte, low_byte):
@@ -48,7 +49,7 @@ class Dart():
 
         
         # test if on real robot, if yes load the drivers
-#        if os.access("/var/www/daarrt.conf", os.F_OK) :
+        # if os.access("/var/www/daarrt.conf", os.F_OK) :
         if os.access("/sys/class/gpio/gpio266", os.F_OK) :
             print ("Real DART is being created")
 
@@ -227,7 +228,7 @@ class Dart():
         print ("Game Over")
         # add a command to stop the motors
         self.set_speed(0,0)
-        # stop the connection to the simulator	
+        # stop the connection to the simulator    
         self.__simulation_alive = False
    
     def set_speed(self, speed_left, speed_right):
@@ -241,7 +242,7 @@ class Dart():
         
     def get_distance(self, direction):
         return(self.__sonars.get_distance(direction))
-	
+    
     def get_angles(self):
         #return(self.__razor.angles()[0])
         return(self.__vHeading)
@@ -284,7 +285,7 @@ class Dart():
                 headOK = True
                 self.set_speed(0,0)
             else:
-                print(self.__vHeading)
+                #print(self.__vHeading)
                 #print(abs(headErr) - headErrMax)
                 time.sleep(0.1)
 
@@ -299,7 +300,7 @@ class Dart():
             capFinal=self.get_angles()
             diff = capInitial-capFinal
             diff = self.center(capInitial, capFinal, diff)
-            print(capInitial-capFinal)
+            #print(capInitial-capFinal)
             if capInitial-capFinal>0:
                 self.set_speed(speed+3,speed)
             else:
@@ -315,23 +316,18 @@ class Dart():
             t1=time.time()
             gauche1, droite1=self.get_odometers()
             time.sleep(0.1)
-            print((gauche1 - gauche0) - (droite1-droite0) )
+            #print((gauche1 - gauche0) - (droite1-droite0) )
             if (gauche1 - gauche0) - (droite1-droite0) > 1:
                 self.set_speed(speed, speed + 3)
             elif (gauche1 - gauche0) - (droite1-droite0) < -1:
                 self.set_speed(speed + 3, speed)
             gauche0, droite0 = gauche1, droite1
 
+            
     def obstacleAvoid(self):
-        distanceMax=1
-        self.set_speed(50,50)
-        while True:
-            d=self.get_distance('front')
-            print(d)
-            if d-distanceMax<0:
-                self.set_speed(50,-50)
-            else:
-                self.set_speed(-50,50)
+        self.set_speed(0,0)
+        self.setHeading(self.get_angles()+90)
+        """ A perfectionner plus tard """
 
     def goCurveOdo (self,speedTan, radius, sign, duration):
 
@@ -343,12 +339,100 @@ class Dart():
             else:
                 self.goLineHeading (self.setHeading(1,1),(-50,50), 0.1)
 
+
+STATE_FORWARD = 1
+STATE_TURN_LEFT = 2
+STATE_TURN_RIGHT = 3
+STATE_STOP = 0
+             
+                
+class FSMfacile():
+    """FSM basique du robot, où les avancées sont pré-programmées, et les rotations aussi (90°)"""
+    
+    def __init__(self,robot):
+
+        self.state = 0
+        self.nxtState = 0
+        self.robot = robot
+        self.dMax = 1
         
+    def arret(self,robot):
+       robot.set_speed(0,0)
+   
+    def avancer(self,robot):
+        
+        d = robot.get_distance("front")
+        if d<=0.005:
+            d = 1000
+        print(d)
+        if d < self.dMax :
+            robot.obstacleAvoid()
+            print("manoeuvre evitement")
+        else:
+            robot.goLineHeading(robot.get_angles(),60,0.2)
+        
+    def rotationDroite(self,robot):
+        robot.setHeading(robot.get_angles()+90)
+        self.nxtState = 0
+        
+    def rotationGauche(self,robot):
+        robot.setHeading(robot.get_angles()-90)
+        self.nxtState = 0
+    
+        
+    def global_next_state(self, key):
+        if key == 'a':
+            self.nxtState = STATE_FORWARD
+        elif key == 'g':
+            self.nxtState = STATE_TURN_LEFT
+        elif key == 'd':
+            self.nxtState = STATE_TURN_RIGHT
+        elif key == 's':
+            self.nxtState = STATE_STOP
+
+    
+    def run(self):        
+        if self.nxtState == STATE_FORWARD:
+            self.state = 1
+            print("Avancer")
+            self.avancer(self.robot)
+            
+
+        elif self.nxtState == STATE_TURN_LEFT:
+            self.state = 2
+            print("Rotation gauche")
+            self.rotationGauche(self.robot)
+            
+        elif self.nxtState == STATE_TURN_RIGHT:
+            self.state == 3
+            print("Rotation Droite")
+            self.rotationDroite(self.robot)
+            
+        elif self.nxtState == STATE_STOP:
+            self.state = 0
+            self.arret(self.robot)
+            
+            
+class Key_listener(Thread):
+    def __init__(self, fsm):
+        Thread.__init__(self)
+        self.fsm = fsm
+    
+    def run(self):
+        while True:
+            l = input("fsm : ")
+            self.fsm.global_next_state(l)
+
 
 if __name__ == "__main__":
     myDart = Dart()
-    myDart.obstacleAvoid()
-    #arrêt
-    myDart.stop()
+#    myDart.obstacleAvoid()
+##    arrêt
+#    myDart.stop()
 
-
+    fsm = FSMfacile(myDart)
+    kl = Key_listener(fsm)
+    kl.start()
+    
+    while True:
+        fsm.run()
