@@ -13,6 +13,7 @@ class FSMfacile():
 
         self.state = "arret"
         self.nxtState = "arret"
+        self.robot = Dart()
         
     def arret(robot):
        robot.set_speed(0,0)
