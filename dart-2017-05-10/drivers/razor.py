@@ -25,21 +25,17 @@ class RazorIO():
 
             yaw angle is used as robot heading
         """
-
-        # in next line replace ???? with the right command and uncomment  
-        # self.state = ?????
+        self.state=b"#f"
         self.bus.write(self.state)
 
-        #try:
-            # get the 12 bytes of data with bus.read
-            # ????
-            #  and decode it with struct unpack
-            #  output must be a list with 3 values
-            # output = ???
-        #except:
-            #output = None
-            #pass
-        #return output
+        try:
+            message = self.bus.read(12)
+            [yaw, pitch, roll] = struct.unpack('fff', message) 
+            output = [yaw, pitch, roll]
+        except:
+            output = None
+            pass
+        return output
 
 if __name__ == "__main__":
     razor = RazorIO()

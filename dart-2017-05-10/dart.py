@@ -228,12 +228,14 @@ class Dart():
         print ("Game Over")
         # add a command to stop the motors
         self.set_speed(0,0)
+        self.__trex.i2c_write()
         # stop the connection to the simulator    
         self.__simulation_alive = False
    
     def set_speed(self, speed_left, speed_right):
         self.__trex.command["left_motor_speed"] = speed_left
-        self.__trex.command["right_motor_speed"] = speed_right 
+        self.__trex.command["right_motor_speed"] = speed_right
+        self.__trex.i2c_write() 
     
     def get_odometers(self):
         vLeft = self.__trex.status ['left_encoder']
@@ -244,14 +246,14 @@ class Dart():
         return(self.__sonars.get_distance(direction))
     
     def get_angles(self):
-        #return(self.__razor.angles()[0])
-        return(self.__vHeading)
+        return(self.__razor.angles[0])
+        #return(self.__vHeading)
 
     def goCap(self, trigo):
         self.set_speed(50,-50)
         while(self.get_angles()-trigo > 2 or self.get_angles()-trigo < -2):
             continue
-        self.stop()
+        self.set_speed(0,0)
  
     def center(self, a,b,s):
         
@@ -433,6 +435,7 @@ if __name__ == "__main__":
     fsm = FSMfacile(myDart)
     kl = Key_listener(fsm)
     kl.start()
-    
+    print("en avant Michel")
     while True:
         fsm.run()
+
