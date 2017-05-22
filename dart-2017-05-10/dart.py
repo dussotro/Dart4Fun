@@ -274,8 +274,6 @@ class Dart():
             headMes = self.get_angles()
             headErr = head - headMes
             headErr = self.center(head, headMes, headErr)
-            #headErr = headErr - 180
-            #headErr centré en 0
             vit = abs(headErr)/4 + 30
             if headErr >=0 :
                 self.set_speed(vit,-vit)
@@ -429,7 +427,7 @@ class Key_listener(Thread):
 if __name__ == "__main__":
     myDart = Dart()
 #    myDart.obstacleAvoid()
-##    arrêt
+#   arrêt
 #    myDart.stop()
 
     fsm = FSMfacile(myDart)
