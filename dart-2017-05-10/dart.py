@@ -255,42 +255,35 @@ class Dart():
             continue
         self.set_speed(0,0)
  
-    def center(self, a,b,s):
-        
-        if s<=-180:
+    def center(self,s):
+        if s<-180:
             s = s + 360
         elif s > 180:
-            s = s - 360
-        #a entre -180 et 180
-        #b entre -180 et 180
+            s = s-360
         return(s)
 
 
     def setHeading(self, head):
         #head entre 0 et 360
-        headErrMax = 1
+        headErrMax = 0.5
         headOK = False
         while not headOK :
+            time.sleep(0.05)
             headMes = self.get_angles()
             headErr = head - headMes
-            headErr = self.center(head, headMes, headErr)
+            headErr = self.center(headErr)
             vit = abs(headErr)/4 + 30
-            if headErr >=0 :
+            if headErr >= 0 :
                 self.set_speed(vit,-vit)
             else :
                 self.set_speed(-vit,vit)
 
             if abs(headErr) < headErrMax:
-                print("ca marche Michel")
                 headOK = True
                 self.set_speed(0,0)
-            else:
-                #print(self.__vHeading)
-                #print(abs(headErr) - headErrMax)
-                time.sleep(0.05)
+
 
     def goLineHeading (self,head,speed, duration):
-        time.sleep(0.1)
         capInitial=head
         t0=time.time()
         t1=time.time()
@@ -298,13 +291,13 @@ class Dart():
             t1=time.time()
             capFinal=self.get_angles()
             diff = capInitial-capFinal
-            diff = self.center(capInitial, capFinal, diff)
-            #print(capInitial-capFinal)
-            if diff > 0:
-                self.set_speed(speed+5,speed)
+            diff2 = self.center(diff)
+            if diff2 > 1:
+                self.set_speed(speed+9,speed)
+            elif diff2 < -1:
+                self.set_speed(speed, speed+9)
             else:
-                self.set_speed(speed, speed+5)
-        #self.set_speed(0,0)
+                self.set_speed(speed, speed)
 
     def goLineOdo (self,speed, duration):
         self.setHeading(50)
@@ -315,7 +308,6 @@ class Dart():
             t1=time.time()
             gauche1, droite1=self.get_odometers()
             time.sleep(0.1)
-            #print((gauche1 - gauche0) - (droite1-droite0) )
             if (gauche1 - gauche0) - (droite1-droite0) > 1:
                 self.set_speed(speed, speed + 3)
             elif (gauche1 - gauche0) - (droite1-droite0) < -1:
@@ -334,17 +326,16 @@ class Dart():
         t1=time.time()
         while t1-t0 < duration:
             if sign==1:
-                self.goLineHeading (self.setHeading(1,1),(50,-50), 0.1)
+                self.goLineHeading (self.setHeading(1,1),(50,-50), 0.05)
             else:
-                self.goLineHeading (self.setHeading(1,1),(-50,50), 0.1)
+                self.goLineHeading (self.setHeading(1,1),(-50,50), 0.05)
 
 
 STATE_FORWARD = 1
 STATE_TURN_LEFT = 2
 STATE_TURN_RIGHT = 3
 STATE_STOP = 0
-cpt = 0
-cptfacile = 0             
+           
                 
 class FSMfacile():
     """FSM basique du robot, où les avancées sont pré-programmées, et les rotations aussi (90°)"""
@@ -355,36 +346,24 @@ class FSMfacile():
         self.nxtState = 1
         self.robot = robot
         self.dMax = 1
-        self.capActuel = self.robot.get_angles()
-        variable1 = self.capActuel
+        self.capActuel = 90
         self.cpt = 0
         self.cptfacile = 0
-        self.indiceCap = 0
-        self.caps = [variable1 , variable1 +90, variable1 +180 , variable1 -90]
+        self.indiceCap = 1
+        self.caps = [0 , 90, 180 , -90]
         
     def arret(self,robot):
        robot.set_speed(0,0)
    
     def avancer(self,robot):
-        """
-        d = robot.get_distance("front")
-        if d<=0.005:
-            d = 1000
-        print(d)
-
-        if d < self.dMax :
-            robot.obstacleAvoid()
-            print("manoeuvre evitement")
-        else:
-        """
         print(self.caps[self.indiceCap])
         if self.cptfacile == 0:
             t1 = time.time()
-            while time.time()-t1 < 2:
-                robot.goLineHeading(self.caps[self.indiceCap],100,0.2)
+            while time.time()-t1 < 1:
+                robot.goLineHeading(self.caps[self.indiceCap],80,0.08)
             self.cptfacile += 1     
         else:
-            robot.goLineHeading(self.caps[self.indiceCap],100,0.2)
+            robot.goLineHeading(self.caps[self.indiceCap],80,0.08)
 
 
     def rotationDroite(self,robot):
@@ -413,22 +392,26 @@ class FSMfacile():
     def run(self):        
         if self.nxtState == STATE_FORWARD:
             self.state = 1
-            print("Avancer")
             self.avancer(self.robot)
 
-            if self.robot.get_distance('front') > 0.2 and ((self.robot.get_distance('left') > 2 and self.robot.get_distance('right') > 2) or (self.robot.get_distance('left') < 0.7 and self.robot.get_distance('right') < 0.7)):
-                self.nxtState = STATE_FORWARD
+            print("les distances sont {} devant, {} derrière, {} à droite et {} à gauche".format(self.robot.get_distance('front'), self.robot.get_distance('rear'), self.robot.get_distance('right'), self.robot.get_distance('left')))
             
-            elif self.robot.get_distance("right") > 1 and self.robot.get_distance('front') < 0.3:
-                print('turnR')
+            if self.cptfacile == 11:
+                self.nxtState = STATE_STOP
+
+            elif self.cptfacile == 10 and self.robot.get_distance('front') > 0.5: 
+                self.nxtState == STATE_FORWARD 
+            
+            elif self.robot.get_distance('left') > 0.6 and (self.robot.get_distance("rear") > 1.35 and self.cptfacile <= 3) or (self.cptfacile > 3 and self.robot.get_distance('left') > 0.6 and self.robot.get_distance("rear") > 0.5) and self.cptfacile != 6: 
+                    self.nxtState = STATE_TURN_LEFT
+            
+            elif self.robot.get_distance("front") < 0.275 and self.robot.get_distance("left") < 0.4:
                 self.nxtState = STATE_TURN_RIGHT
 
-            elif self.robot.get_distance('left') > 1.5 and self.robot.get_distance('rear') > 1.2:
-                    self.nxtState = STATE_TURN_LEFT
 
-            elif self.cptfacile == 11:
-                self.nxtState = STATE_STOP 
-
+            elif self.robot.get_distance('front') > 0.3:
+                print('compteur = ',self.cptfacile)
+                self.nxtState = STATE_FORWARD
 
 
         elif self.nxtState == STATE_TURN_LEFT:
@@ -462,14 +445,13 @@ class Key_listener(Thread):
 
 if __name__ == "__main__":
     myDart = Dart()
-#    myDart.obstacleAvoid()
 #   arrêt
-#    myDart.stop()
-
+    #myDart.stop()
+    
     fsm = FSMfacile(myDart)
     kl = Key_listener(fsm)
     #kl.start()
     print("en avant Michel")
     while True:
         fsm.run()
-
+    

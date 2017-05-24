@@ -174,6 +174,9 @@ class vSonar():
         else:
             distance = self.__SPEED_OF_SOUND * (t1-t0) / 2
 
+        if distance < 0.001:
+            distance = 1000
+
         return distance
 
 
