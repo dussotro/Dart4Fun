@@ -68,7 +68,7 @@ class TrexIO():
         'impact_sensitivity_low_byte'   Impact sensitivity low byte
         'battery_high_byte'             Battery voltage high byte (motors off)
         'battery_low_byte'              Battery voltage low byte (motors off)
-        'i2c_address'                   I2C slave address
+        'i2c_address'                   I2C subordinate address
         'i2c_clock'                     I2C clock frequency
         
     """
